@@ -1,0 +1,5 @@
+-- Number of checkups per mother
+SELECT mother_id, COUNT(*) AS total_checkups FROM Checkups GROUP BY mother_id;
+
+-- Mothers with no checkups
+SELECT * FROM Mothers WHERE mother_id NOT IN (SELECT DISTINCT mother_id FROM Checkups);

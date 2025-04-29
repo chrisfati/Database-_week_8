@@ -1,0 +1,29 @@
+CREATE TABLE Mothers (
+    mother_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    age INT,
+    location VARCHAR(100)
+);
+
+CREATE TABLE HealthCenters (
+    center_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    region VARCHAR(100)
+);
+
+CREATE TABLE HealthcareWorkers (
+    worker_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    center_id INT,
+    FOREIGN KEY (center_id) REFERENCES HealthCenters(center_id)
+);
+
+CREATE TABLE Checkups (
+    checkup_id INT PRIMARY KEY AUTO_INCREMENT,
+    mother_id INT,
+    worker_id INT,
+    checkup_date DATE,
+    notes TEXT,
+    FOREIGN KEY (mother_id) REFERENCES Mothers(mother_id),
+    FOREIGN KEY (worker_id) REFERENCES HealthcareWorkers(worker_id)
+);
